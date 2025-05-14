@@ -4,16 +4,16 @@ import java.util.*;
 public class baggage {
     private int numberOfBags;
     private double totalWeight;
-    private boolean hasOversized;
     private String baggageTag;
+    private String bagWeight;
+    public static boolean baggageScreened = false;
 
     // Constructor to initialize baggage info
-    public baggage(int numberOfBags, double totalWeight, boolean hasOversized) {
+    public baggage(int numberOfBags, double totalWeight) {
         this.numberOfBags = numberOfBags;
         this.totalWeight = totalWeight;
-        this.hasOversized = hasOversized;
     }
-    
+
     private String generateBaggageTag() {
         Random rand = new Random();
         StringBuilder tag = new StringBuilder();
@@ -31,31 +31,114 @@ public class baggage {
         return tag.toString();
     }
 
-    // Method to collect baggage info
-      public void collectBaggageInfo(Scanner scanner) {
-        // Limit number of bags to 5
-        int maxBags = 5;
-
-        System.out.print("Enter total number of bags (Max 5): ");
-        numberOfBags = scanner.nextInt();
-        if (numberOfBags > maxBags) {
-            System.out.println("You can only check in a maximum of " + maxBags + " bags.");
-            numberOfBags = maxBags;  // Set to max allowed if the input is greater
+    // Method to collect solo baggage info with validation
+    public void collectSoloBaggageInfo(Scanner scanner) {
+        int maxBags = 2;
+        
+        // Loop until valid number of bags is entered
+        while (true) {
+            System.out.print("Enter total number of bags (Max 2): ");
+            if (scanner.hasNextInt()) {
+                numberOfBags = scanner.nextInt();
+                if (numberOfBags <= maxBags && numberOfBags > 0) {
+                    break;
+                } else {
+                    System.out.println("Error: You can only check in a maximum of " + maxBags + " bags.");
+                }
+            } else {
+                System.out.println("Error: Please enter a valid number.");
+                scanner.next(); // consume invalid input
+            }
         }
 
-        System.out.print("Enter total weight (kg): ");
-        totalWeight = scanner.nextDouble();
-        scanner.nextLine(); // consume newline
+        // Loop until valid weight is entered
+        while (true) {
+            System.out.print("Enter total weight (kg): ");
+            if (scanner.hasNextDouble()) {
+                totalWeight = scanner.nextDouble();
+                if (totalWeight >= 0) {
+                    break; 
+                } else {
+                    System.out.println("Error: Weight cannot be negative.");
+                }
+            } else {
+                System.out.println("Error: Please enter a valid weight in numbers.");
+                scanner.next(); // consume invalid input
+            }
+        }
+        scanner.nextLine(); // consume newline after number input
 
-        // Ask if there are oversized bags
-        System.out.print("Are there any oversized bags? (Yes/No): ");
-        String oversizedResponse = scanner.nextLine();
-        hasOversized = oversizedResponse.equalsIgnoreCase("yes");
-
-        // Generate a random baggage tag for tracking purposes and store it
+        if (totalWeight > (23 * numberOfBags)) {
+            bagWeight = "Overweight";
+        } 
+        else {
+            bagWeight = "Normal";
+        }
+        
+        // Generate and display baggage tag
         baggageTag = generateBaggageTag();
-        System.out.println("Your baggage tag for tracking: " + baggageTag);
     }
+    
+    // Method to collect group baggage info with validation
+    public void collectGroupBaggageInfo(Scanner scanner) {
+        int maxBags = 10;
+
+        while (true) {
+            System.out.print("Enter total number of bags for the group (Max " + maxBags + "): ");
+            if (scanner.hasNextInt()) {
+                numberOfBags = scanner.nextInt();
+                if (numberOfBags > 0 && numberOfBags <= maxBags) {
+                    break;
+                } else {
+                    System.out.println("Error: You can only check in a maximum of " + maxBags + " bags.");
+                }
+            } else {
+                System.out.println("Error: Please enter a valid number.");
+                scanner.next();
+            }
+        }
+
+        while (true) {
+            System.out.print("Enter total baggage weight(kg): ");
+            if (scanner.hasNextDouble()) {
+                totalWeight = scanner.nextDouble();
+                if (totalWeight >= 0) {
+                    break;
+                } else {
+                    System.out.println("Error: Weight cannot be negative.");
+                }
+            } else {
+                System.out.println("Error: Please enter a valid weight in numbers.");
+                scanner.next();
+            }
+        }
+        scanner.nextLine();
+
+        if (totalWeight > (23 * numberOfBags)) {
+            bagWeight = "Overweight";
+        } else {
+            bagWeight = "Normal";
+        }
+
+        baggageTag = generateBaggageTag();
+    }
+
+        // Method to screen baggage
+        public static void screenBaggage() {
+            System.out.println("Please wait a moment for your baggage to be screened...");
+            for (int i = 8; i >= 1; i--) {
+                System.out.println("Baggage screening in session... " + i + " seconds remaining");
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    System.out.println("Timer interrupted");
+                }
+            }
+            System.out.println("Screening completed! You may check in.");
+            baggageScreened = true; // set flag to true
+        }
+    
+    
 
     // Method to display baggage info
     public void displayBaggageInfo() {
@@ -63,7 +146,7 @@ public class baggage {
         System.out.println("Baggage Information:");
         System.out.println("Number of Bags: " + numberOfBags);
         System.out.println("Total Weight: " + totalWeight + " kg");
-        System.out.println("Oversized Bags: " + (hasOversized ? "Yes" : "No"));
+        System.out.println("Size: " + bagWeight);
         System.out.println("Baggage Tag: " + baggageTag); // Display the stored baggage tag
     }
 }
