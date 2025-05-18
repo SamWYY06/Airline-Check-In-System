@@ -125,9 +125,9 @@ public class baggage {
 
         // Method to screen baggage
         public static void screenBaggage() {
-            System.out.println("Please wait a moment for your baggage to be screened...");
+            System.out.println(">>>Please wait a moment for your baggage to be screened...");
             for (int i = 8; i >= 1; i--) {
-                System.out.println("Baggage screening in session... " + i + " seconds remaining");
+                System.out.println(">>>Baggage screening in session... " + i + " seconds remaining");
                 try {
                     Thread.sleep(1000);
                 } catch (InterruptedException e) {
@@ -141,12 +141,20 @@ public class baggage {
     
 
     // Method to display baggage info
+    // Method to display baggage info (with screening status)
     public void displayBaggageInfo() {
-        System.out.println("---------------------------------------");
-        System.out.println("Baggage Information:");
-        System.out.println("Number of Bags: " + numberOfBags);
-        System.out.println("Total Weight: " + totalWeight + " kg");
-        System.out.println("Size: " + bagWeight);
-        System.out.println("Baggage Tag: " + baggageTag); // Display the stored baggage tag
+        System.out.println("\n+------------------------------------------+");
+        System.out.println("|           BAGGAGE INFORMATION            |");
+        System.out.println("+------------------------------------------+");
+        System.out.printf("| %-20s : %-17d |\n", "Number of Bags", numberOfBags);
+        System.out.printf("| %-20s : %-17s |\n", "Total Weight", String.format("%.2f kg", totalWeight));
+        System.out.printf("| %-20s : %-17s |\n", "Bag Size", bagWeight);
+        System.out.printf("| %-20s : %-17s |\n", "Baggage Tag", baggageTag);
+        System.out.printf("| %-20s : %-17s |\n", "Screening Status", (baggageScreened ? "Screened" : "Not Screened"));
+        System.out.println("+------------------------------------------+");
     }
+
+
+
+
 }
