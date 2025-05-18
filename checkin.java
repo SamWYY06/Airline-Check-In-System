@@ -23,6 +23,7 @@ public class checkin {
             System.out.println("----------------------------------------------------");
             
             if (pName.matches("[a-zA-Z ]+")) { // Allow spaces in names
+                pName = pName.toUpperCase();
                 break;
             }
             else {
@@ -36,10 +37,10 @@ public class checkin {
         while(true) {
             System.out.println("Format: ABCD1234");
             System.out.print("Enter Passenger ID: ");
-            pID = scanner.nextLine();
+            pID = scanner.nextLine().toUpperCase();
             System.out.println("----------------------------------------------------");
             
-            if (pID.matches("^[A-Z]{4}[0-9]{4}$")) {  
+            if (pID.matches("^[A-Z]{4}[0-9]{4}$")) {
                 break;
             }
             else {
@@ -53,10 +54,10 @@ public class checkin {
         while(true) {
             System.out.println("Format: A12345678");
             System.out.print("Enter Passport Number: ");
-            passportNum = scanner.nextLine();
+            passportNum = scanner.nextLine().toUpperCase();
             System.out.println("----------------------------------------------------");
             
-            if (passportNum.matches("[A-Z]{1}[0-9]{8}")) { 
+            if (passportNum.matches("[A-Z]{1}[0-9]{8}")) {
                 break;
             }
             else {
@@ -67,11 +68,11 @@ public class checkin {
         
         String phoneNum = "";
         while(true) {
-            System.out.println("Format (No spacing needed): 01X XXX XXXX");
+            System.out.println("Format: Maximum of 11 digits");
             System.out.print("Enter Phone Number: ");
             phoneNum = scanner.nextLine();
             
-            if (phoneNum.matches("^01[0-9]{9}$")) {
+            if (phoneNum.matches("^01[0-9]{8,9}$")) {
                 break;
             }
             else {
@@ -162,6 +163,7 @@ public class checkin {
             System.out.println("----------------------------------------------------");
             
             if (repName.matches("[a-zA-Z ]+")) { // Allow spaces in names
+                repName = repName.toUpperCase();
                 break;
             }
             else {
@@ -175,7 +177,7 @@ public class checkin {
         while(true) {
             System.out.println("Format: ABCD1234");
             System.out.print("Enter Representative Passenger ID: ");
-            repID = scanner.nextLine();
+            repID = scanner.nextLine().toUpperCase();
             System.out.println("----------------------------------------------------");
             
             if (repID.matches("^[A-Z]{4}[0-9]{4}$")) {  
@@ -192,7 +194,7 @@ public class checkin {
         while(true) {
             System.out.println("Format: A12345678");
             System.out.print("Enter Representative Passport Number: ");
-            repPassportNum = scanner.nextLine();
+            repPassportNum = scanner.nextLine().toUpperCase();
             System.out.println("----------------------------------------------------");
             
             if (repPassportNum.matches("[A-Z]{1}[0-9]{8}")) { 
@@ -206,11 +208,11 @@ public class checkin {
         
         String repPhoneNum = "";
         while(true) {
-            System.out.println("Format (No spacing needed): 01X XXX XXXX");
+            System.out.println("Format: Maximum of 11 digits");
             System.out.print("Enter Representative Phone Number: ");
             repPhoneNum = scanner.nextLine();
             
-            if (repPhoneNum.matches("^01[0-9]{9}$")) {
+            if (repPhoneNum.matches("^01[0-9]{8,9}$")) {
                 break;
             }
             else {
@@ -315,6 +317,7 @@ public class checkin {
             System.out.println("----------------------------------------------------");
             
             if (pName.matches("[a-zA-Z ]+")) { // Allow spaces in names
+                pName = pName.toUpperCase();
                 break;
             }
             else {
@@ -328,7 +331,7 @@ public class checkin {
         while(true) {
             System.out.println("Format: ABCD1234");
             System.out.print("Enter Passenger ID: ");
-            pID = scanner.nextLine();
+            pID = scanner.nextLine().toUpperCase();
             System.out.println("----------------------------------------------------");
             
             if (pID.matches("^[A-Z]{4}[0-9]{4}$")) {  
@@ -342,11 +345,11 @@ public class checkin {
         
         String phoneNum = "";
         while(true) {
-            System.out.println("Format (No spacing needed): 01X XXX XXXX");
+            System.out.println("Format: Maximum of 11 digits");
             System.out.print("Enter Phone Number: ");
             phoneNum = scanner.nextLine();
             
-            if (phoneNum.matches("^01[0-9]{8}$")) {
+            if (phoneNum.matches("^01[0-9]{8,9}$")) {
                 break;
             }
             else {
@@ -366,7 +369,7 @@ public class checkin {
         while (true) {
             System.out.println("Format: A12345678");
             System.out.print("Enter Passport Number: ");
-            passportNum = scanner.nextLine().trim();
+            passportNum = scanner.nextLine().toUpperCase();
             System.out.println("----------------------------------------------------");
 
             if (passportNum.matches("[A-Z]{1}[0-9]{8}")) {
@@ -474,10 +477,11 @@ public class checkin {
         // Validation (only alphabetic characters allowed)
         while (true) {
             System.out.print("Enter Representative Name: ");
-            repName = scanner.nextLine();
+            repName = scanner.nextLine().toUpperCase();
             System.out.println("------------------------------------------------");
             
-            if (repName.matches("[a-zA-Z ]+")) { // Allow spaces in names
+            if (repName.matches("[a-zA-Z ]+")) {
+                repName = repName.toUpperCase();
                 break;
             }
             else {
@@ -491,7 +495,7 @@ public class checkin {
         while(true) {
             System.out.println("Format: ABCD1234");
             System.out.print("Enter Representative Passenger ID: ");
-            repID = scanner.nextLine();
+            repID = scanner.nextLine().toUpperCase();
             System.out.println("------------------------------------------------");
             
             if (repID.matches("^[A-Z]{4}[0-9]{4}$")) {  
@@ -505,11 +509,11 @@ public class checkin {
         
         String repPhoneNum = "";
         while(true) {
-            System.out.println("Format (No spacing needed): 01X XXX XXXX");
+            System.out.println("Format: Maximum of 11 digits");
             System.out.print("Enter Representative Phone Number: ");
             repPhoneNum = scanner.nextLine();
             
-            if (repPhoneNum.matches("^01[0-9]{8}$")) {
+            if (repPhoneNum.matches("^01[0-9]{8,9}$")) {
                 break;
             }
             else {
@@ -542,7 +546,7 @@ public class checkin {
         while(true) {
             System.out.println("Format: A12345678");
             System.out.print("Enter Representative Passport Number: ");
-            repPassportNum = scanner.nextLine();
+            repPassportNum = scanner.nextLine().toUpperCase();
             System.out.println("------------------------------------------------");
             
             if (repPassportNum.matches("[A-Z]{1}[0-9]{8}")) { 
