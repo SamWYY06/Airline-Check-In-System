@@ -136,15 +136,22 @@ public class FlightDetails {
     
     // Display flight information
     public void displayFlightInfo() {
-        System.out.println("\n--------------- Flight Information -----------------");
-        System.out.println("Flight Number: " + flightNumber + " (" + airlineName + ")");
-        System.out.println("From: " + origin);
-        System.out.println("To: " + destination);
-        System.out.println("Departure: " + departureTime.toLocalDate() + " at " + departureTime.toLocalTime().format(java.time.format.DateTimeFormatter.ofPattern("HH:mm")));
-        System.out.println("Arrival: " + arrivalTime.toLocalDate() + " at " + arrivalTime.toLocalTime().format(java.time.format.DateTimeFormatter.ofPattern("HH:mm")));
-        System.out.println("Aircraft: " + aircraft);
-        System.out.println("Terminal: " + terminalId);
-        System.out.println("Flight Type: " + (isInternational ? "International" : "Domestic"));
-        System.out.println("----------------------------------------------------");
+        System.out.println("\n+--------------------------------------------------+");
+        System.out.println("|               FLIGHT INFORMATION                 |");
+        System.out.println("+--------------------------------------------------+");
+        System.out.printf ("| Flight Number : %-32s |\n", flightNumber + " (" + airlineName + ")");
+        System.out.printf ("| From          : %-32s |\n", origin);
+        System.out.printf ("| To            : %-32s |\n", destination);
+        System.out.printf ("| Departure     : %-32s |\n", 
+            departureTime.toLocalDate() + " at " + 
+            departureTime.toLocalTime().format(java.time.format.DateTimeFormatter.ofPattern("HH:mm")));
+        System.out.printf ("| Arrival       : %-32s |\n", 
+            arrivalTime.toLocalDate() + " at " + 
+            arrivalTime.toLocalTime().format(java.time.format.DateTimeFormatter.ofPattern("HH:mm")));
+        System.out.printf ("| Aircraft      : %-32s |\n", aircraft);
+        System.out.printf ("| Terminal      : %-32s |\n", terminalId);
+        System.out.printf ("| Flight Type   : %-32s |\n", (isInternational ? "International" : "Domestic"));
+        System.out.println("+--------------------------------------------------+");
     }
+
 }
