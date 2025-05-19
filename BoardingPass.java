@@ -111,7 +111,7 @@ public class BoardingPass {
         System.out.println("\n==================================================");
         System.out.println("             AEROCHECK BOARDING PASS              ");
         System.out.println("==================================================");
-        System.out.println("FLIGHT: " + flightNumber + "         DATE: " + departureTime.format(dateFormatter));
+        System.out.println("FLIGHT: " + flightNumber + "                DATE: " + departureTime.format(dateFormatter));
         System.out.println("FROM: " + origin + "          TO: " + destination);
         System.out.println("--------------------------------------------------");
         System.out.println("PASSENGER: " + passengerName);
